@@ -1,0 +1,46 @@
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import static io.restassured.RestAssured.*;
+
+import java.io.File;
+
+import Pojo.LoginRequest;
+import Pojo.LoginResponse;
+
+public class ECommerceAPITest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		RequestSpecification req =  new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+		.setContentType(ContentType.JSON).build();
+        
+		LoginRequest loginRequest = new LoginRequest();
+		loginRequest.setUserEmail("rahulshetty@gmail.com");
+		loginRequest.setUserPassword("Iamking@000");
+		
+		
+		RequestSpecification reqLogin = given().log().all().spec(req).body(loginRequest);
+		LoginResponse loginResponse = reqLogin.when().post("/api/ecom/auth/login").then().log().all().extract().response()
+				.as(LoginResponse.class);
+		System.out.println(loginResponse.getToken());
+		String token = loginResponse.getToken();
+		System.out.println(loginResponse.getUserId());
+		String userId =loginResponse.getUserId();
+		
+		
+		// Add product
+		
+		RequestSpecification addProductBaseReq =  new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com")
+				.addHeader("authorization", token)
+				.build();
+		
+		RequestSpecification reqAddProduct = given().log().all().spec(addProductBaseReq).param("productName", "Laptop")
+				.param("productAddedBy", userId).param("productCategory", "fashion")
+				.param("productSubCategory", "shirts").param("productPrice", "11500")
+				.param("productDescription", "Lenova").param("productFor", "men")
+				.multiPart("productImage",new File("Downloads//Error.png"));
+	}
+
+}

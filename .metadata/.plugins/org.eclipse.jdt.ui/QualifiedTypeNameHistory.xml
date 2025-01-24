@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="io.restassured.RestAssured"/>
+    <fullyQualifiedTypeName name="Files.payload"/>
+    <fullyQualifiedTypeName name="Files.ReUsableMethods"/>
+    <fullyQualifiedTypeName name="io.restassured.parsing.Parser"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="io.restassured.http.ContentType"/>
+    <fullyQualifiedTypeName name="Pojo.LoginResponse"/>
+    <fullyQualifiedTypeName name="io.cucumber.junit.Cucumber"/>
+</qualifiedTypeNameHistroy>
