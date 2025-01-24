@@ -32,6 +32,7 @@ public class Basics {
 		JsonPath js = new JsonPath(response);   //for parsing Json
 		String placeId = js.getString("place_id");
 		System.out.println(placeId);
+		System.out.println("Testing");
 		
 		
 		// update place
